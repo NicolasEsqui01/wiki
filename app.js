@@ -22,7 +22,7 @@ nunjucks.configure("views", { noCache: true });
 
 app.use("/", router);
 
-db.sync({ force: true }).then(() => {
+db.sync({ force: false }).then(() => {
   app.listen(port);
   console.log("escuchando en el puerto " + port);
 });

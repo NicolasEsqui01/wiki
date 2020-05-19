@@ -25,8 +25,6 @@ Page.init(
     },
     route: {
       type: Sequelize.VIRTUAL,
-      // tirar get y devolver el text de la URL title /wiki/txt
-      // return "/wiki" + this.urlTitle
       get() {
         return `/wiki/${this.urlTitle}`;
       },
@@ -35,5 +33,4 @@ Page.init(
   { sequelize: db, modelName: "page" }
 );
 
-console.log(Page.get());
 module.exports = Page;
