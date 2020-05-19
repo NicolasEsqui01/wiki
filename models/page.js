@@ -33,4 +33,16 @@ Page.init(
   { sequelize: db, modelName: "page" }
 );
 
+Page.addHook('beforeValidate', (page, options) => {
+  page.urlTitle = generateUrlTitle(page.title);
+});
+function generateUrlTitle (title) {
+  if (title) {
+    return title.replace(/\s+/g, '_').replace(/\W/g, '');
+  } else {
+    return Math.random().toString(36).substring(2, 7);
+  }
+}
+
+
 module.exports = Page;
